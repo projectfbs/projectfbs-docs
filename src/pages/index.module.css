@@ -1,23 +1,296 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
+/* === Hero Banner === */
 .heroBanner {
-  padding: 4rem 0;
-  text-align: center;
+  padding: 6rem 0 5rem;
+  background: linear-gradient(135deg, #7c3aed 0%, #2563eb 60%, #0ea5e9 100%);
   position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.heroBadge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  padding: 0.35rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.heroBannerTitle {
+  font-size: 4rem;
+  font-weight: 900;
+  color: white;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 0;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.15);
+}
+
+.heroAccent {
+  background: linear-gradient(90deg, #fbbf24, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroBannerSubtitle {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 1.25rem;
+  line-height: 1.7;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroBannerSubtitle strong {
+  color: white;
+}
+
+.heroBannerButtons {
+  margin-top: 2.25rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.heroBannerBtnPrimary {
+  background: white !important;
+  color: #7c3aed !important;
+  font-weight: 700 !important;
+  border: none !important;
+  padding: 0.8rem 2rem !important;
+  border-radius: 50px !important;
+  font-size: 1rem !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+  display: inline-block;
+}
+
+.heroBannerBtnPrimary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25) !important;
+  color: #6d28d9 !important;
+  text-decoration: none !important;
+}
+
+.heroBannerBtnSecondary {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  padding: 0.8rem 2rem !important;
+  border-radius: 50px !important;
+  font-size: 1rem !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  backdrop-filter: blur(8px) !important;
+  display: inline-block;
+}
+
+.heroBannerBtnSecondary:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  transform: translateY(-2px) !important;
+  text-decoration: none !important;
+}
+
+/* === Orbs (decorative) === */
+.heroOrbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
   overflow: hidden;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.orb1 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, transparent 70%);
+  top: -100px;
+  right: -80px;
+  border-radius: 50%;
 }
 
-.buttons {
+.orb2 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.15) 0%, transparent 70%);
+  bottom: -80px;
+  left: 5%;
+  border-radius: 50%;
+}
+
+.orb3 {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, transparent 70%);
+  top: 30%;
+  left: 15%;
+  border-radius: 50%;
+}
+
+/* === Topic Section === */
+.topicSection {
+  padding: 5rem 0;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.sectionSubtitle {
+  font-size: 1rem;
+  opacity: 0.65;
+  margin-top: 0.5rem;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.topicCard {
+  border: 1px solid rgba(124, 58, 237, 0.12);
+  border-radius: 20px;
+  padding: 2rem;
+  text-decoration: none !important;
   display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  background: var(--ifm-background-color);
+}
+
+.topicCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--card-color, #7c3aed);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+  border-radius: 20px 20px 0 0;
+}
+
+.topicCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.12);
+  border-color: var(--card-color, #7c3aed);
+  text-decoration: none !important;
+}
+
+.topicCard:hover::after {
+  transform: scaleX(1);
+}
+
+[data-theme='dark'] .topicCard {
+  border-color: rgba(167, 139, 250, 0.15);
+  background: #13132a;
+}
+
+.topicIcon {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.topicTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ifm-heading-color);
+  margin: 0;
+}
+
+.topicDesc {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  opacity: 0.7;
+  flex: 1;
+  margin: 0;
+}
+
+.topicLink {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--card-color, #7c3aed);
+  margin-top: 0.5rem;
+  transition: letter-spacing 0.2s;
+}
+
+.topicCard:hover .topicLink {
+  letter-spacing: 0.02em;
+}
+
+/* === Stats Section === */
+.statsSection {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, rgba(124,58,237,0.04) 0%, rgba(37,99,235,0.04) 100%);
+  border-top: 1px solid rgba(124, 58, 237, 0.08);
+  border-bottom: 1px solid rgba(124, 58, 237, 0.08);
+}
+
+[data-theme='dark'] .statsSection {
+  background: rgba(167, 139, 250, 0.04);
+  border-color: rgba(167, 139, 250, 0.1);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .heroBannerTitle { font-size: 2.5rem; }
+  .statsGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .heroBannerTitle { font-size: 2rem; }
+  .cardGrid { grid-template-columns: 1fr; }
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding: 1.5rem 1rem;
+}
+
+.statNumber {
+  font-size: 2.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #7c3aed, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0.6;
+  margin-top: 0.5rem;
 }

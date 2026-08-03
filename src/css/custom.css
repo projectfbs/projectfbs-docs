@@ -1,30 +1,380 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+/* ========================================
+   ProjectFBS Docs — Custom Theme
+   Dark Tech Palette: Violet + Cyan
+   ======================================== */
 
-/* You can override the default Infima variables here. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* === Light Mode Variables === */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  /* Primary: Deep Violet */
+  --ifm-color-primary: #7c3aed;
+  --ifm-color-primary-dark: #6d28d9;
+  --ifm-color-primary-darker: #5b21b6;
+  --ifm-color-primary-darkest: #4c1d95;
+  --ifm-color-primary-light: #8b5cf6;
+  --ifm-color-primary-lighter: #a78bfa;
+  --ifm-color-primary-lightest: #c4b5fd;
+
+  /* Typography */
+  --ifm-font-family-base: 'Inter', -apple-system, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', monospace;
+  --ifm-font-size-base: 16px;
+  --ifm-line-height-base: 1.7;
+  --ifm-heading-font-weight: 700;
+
+  /* Spacing & Layout */
+  --ifm-navbar-height: 64px;
+  --ifm-navbar-shadow: 0 1px 0 rgba(124, 58, 237, 0.1);
+  --ifm-toc-border-color: rgba(124, 58, 237, 0.15);
+
+  /* Code */
+  --ifm-code-font-size: 90%;
+  --docusaurus-highlighted-code-line-bg: rgba(124, 58, 237, 0.08);
+
+  /* Custom */
+  --fbs-gradient: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+  --fbs-gradient-subtle: linear-gradient(135deg, rgba(124,58,237,0.05) 0%, rgba(37,99,235,0.05) 100%);
+  --fbs-card-border: 1px solid rgba(124, 58, 237, 0.12);
+  --fbs-card-shadow: 0 4px 24px rgba(124, 58, 237, 0.08);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* === Dark Mode Variables === */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #a78bfa;
+  --ifm-color-primary-dark: #8b5cf6;
+  --ifm-color-primary-darker: #7c3aed;
+  --ifm-color-primary-darkest: #6d28d9;
+  --ifm-color-primary-light: #c4b5fd;
+  --ifm-color-primary-lighter: #ddd6fe;
+  --ifm-color-primary-lightest: #ede9fe;
+
+  --ifm-background-color: #0d0d1a;
+  --ifm-background-surface-color: #13132a;
+  --ifm-navbar-background-color: rgba(13, 13, 26, 0.85);
+  --ifm-toc-border-color: rgba(167, 139, 250, 0.2);
+  --docusaurus-highlighted-code-line-bg: rgba(167, 139, 250, 0.1);
+
+  --fbs-gradient: linear-gradient(135deg, #a78bfa 0%, #60a5fa 100%);
+  --fbs-gradient-subtle: linear-gradient(135deg, rgba(167,139,250,0.08) 0%, rgba(96,165,250,0.08) 100%);
+  --fbs-card-border: 1px solid rgba(167, 139, 250, 0.15);
+  --fbs-card-shadow: 0 4px 24px rgba(167, 139, 250, 0.08);
+}
+
+/* === Global Base === */
+html {
+  scroll-behavior: smooth;
+}
+
+/* === Navbar === */
+.navbar {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+}
+
+[data-theme='dark'] .navbar {
+  border-bottom: 1px solid rgba(167, 139, 250, 0.12);
+}
+
+.navbar__title {
+  font-weight: 800;
+  font-size: 1.1rem;
+  background: var(--fbs-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.navbar__link {
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+/* === Sidebar === */
+.menu__link {
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: all 0.15s ease;
+}
+
+.menu__link--active {
+  background: var(--fbs-gradient-subtle);
+  font-weight: 600;
+}
+
+/* === Doc Content === */
+.markdown h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  background: var(--fbs-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.markdown h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-bottom: 2px solid rgba(124, 58, 237, 0.15);
+  padding-bottom: 0.5rem;
+  margin-top: 2.5rem;
+}
+
+[data-theme='dark'] .markdown h2 {
+  border-bottom-color: rgba(167, 139, 250, 0.2);
+}
+
+.markdown h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+}
+
+/* === Code Blocks === */
+.prism-code {
+  border-radius: 12px !important;
+  border: var(--fbs-card-border) !important;
+  font-size: 0.875rem !important;
+}
+
+code {
+  border-radius: 6px;
+  padding: 0.15em 0.4em;
+  font-size: 0.875em;
+}
+
+/* === Cards (Admonitions) === */
+.alert {
+  border-radius: 12px;
+  border-left-width: 3px;
+}
+
+/* === Pagination === */
+.pagination-nav__link {
+  border-radius: 12px;
+  border: var(--fbs-card-border);
+  transition: all 0.2s ease;
+}
+
+.pagination-nav__link:hover {
+  box-shadow: var(--fbs-card-shadow);
+  border-color: var(--ifm-color-primary);
+}
+
+/* === Table of Contents === */
+.table-of-contents__link {
+  font-size: 0.825rem;
+  transition: color 0.15s;
+}
+
+.table-of-contents__link--active {
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+}
+
+/* === Footer === */
+.footer {
+  background: #0d0d1a;
+  border-top: 1px solid rgba(167, 139, 250, 0.12);
+}
+
+.footer__title {
+  color: #a78bfa;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.footer__copyright {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+/* === Badge / Tag === */
+.badge {
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* === Scrollbar (Dark Mode) === */
+[data-theme='dark'] ::-webkit-scrollbar {
+  width: 6px;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-track {
+  background: #13132a;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: rgba(167, 139, 250, 0.3);
+  border-radius: 3px;
+}
+
+/* === Hero Banner (Custom) === */
+.heroBanner {
+  background: var(--fbs-gradient) !important;
+  padding: 6rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroBanner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.heroBannerTitle {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: white;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.heroBannerSubtitle {
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.85);
+  margin-top: 1rem;
+  font-weight: 400;
+}
+
+.heroBannerButtons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.heroBannerBtnPrimary {
+  background: white !important;
+  color: #7c3aed !important;
+  font-weight: 700 !important;
+  border: none !important;
+  padding: 0.75rem 2rem !important;
+  border-radius: 50px !important;
+  font-size: 1rem !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
+}
+
+.heroBannerBtnPrimary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2) !important;
+}
+
+.heroBannerBtnSecondary {
+  background: rgba(255,255,255,0.15) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  border: 1px solid rgba(255,255,255,0.4) !important;
+  padding: 0.75rem 2rem !important;
+  border-radius: 50px !important;
+  font-size: 1rem !important;
+  transition: all 0.2s ease !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.heroBannerBtnSecondary:hover {
+  background: rgba(255,255,255,0.25) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* === Topic Cards === */
+.topicCards {
+  padding: 5rem 0;
+  background: var(--fbs-gradient-subtle);
+}
+
+.topicCard {
+  border: var(--fbs-card-border);
+  border-radius: 16px;
+  padding: 2rem;
+  height: 100%;
+  transition: all 0.25s ease;
+  background: var(--ifm-background-color);
+  text-decoration: none !important;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.topicCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--fbs-gradient);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.topicCard:hover {
+  box-shadow: var(--fbs-card-shadow);
+  transform: translateY(-4px);
+  border-color: var(--ifm-color-primary);
+  text-decoration: none !important;
+}
+
+.topicCard:hover::before {
+  opacity: 1;
+}
+
+.topicCardIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.topicCardTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ifm-heading-color);
+  margin-bottom: 0.5rem;
+}
+
+.topicCardDesc {
+  font-size: 0.9rem;
+  color: var(--ifm-color-secondary-darkest);
+  line-height: 1.6;
+}
+
+[data-theme='dark'] .topicCardDesc {
+  color: var(--ifm-color-secondary-lighter);
+}
+
+/* === Stats Section === */
+.statsSection {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.statItem {
+  padding: 1.5rem;
+}
+
+.statNumber {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: var(--fbs-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.7;
+  margin-top: 0.25rem;
 }

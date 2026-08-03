@@ -26,7 +26,12 @@ const config: Config = {
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
 
   i18n: {
     defaultLocale: 'id',
@@ -80,6 +85,7 @@ const config: Config = {
           label: 'Dokumentasi',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
+        {to: '/tentang', label: 'Tentang', position: 'left'},
         {
           href: 'https://github.com/projectfbs/projectfbs-docs',
           label: 'GitHub',
